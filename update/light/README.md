@@ -13,7 +13,6 @@ res - drawable - umeng_update_button_cancle_normal.xml
                - umeng_update_button_ok_tap.xml
                - umeng_update_button_cancle_selector.xml
                - umeng_update_button_ok_selector.xml
-               - umeng_update_title_bg.xml
                - umeng_update_dialog_bg.xml
                - umeng_update_wifi_disable.png
                
