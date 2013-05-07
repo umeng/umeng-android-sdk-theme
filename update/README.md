@@ -1,6 +1,8 @@
 ## 自定义自动更新对话框UI
 
-![默认样式](https://raw.github.com/ntop001/umeng-android-sdk-theme/master/update/default/demo.png)
+### 默认效果图如下：
+
+<img src="https://raw.github.com/ntop001/umeng-android-sdk-theme/master/update/default/demo.png" width="500" />
 
 ### 结构
 
@@ -25,7 +27,9 @@ res - drawable - umeng_update_button_cancle_normal.xml
                   - umeng_update_string,xml
 ```
 
-`drawable`  路径下定义了按钮和背景所需的图片， `layout` 路径是更新对话框显示的布局， `values` 路径下是显示的字符串资源， 这些都是可以直接修改的。
+1. `drawable`  路径下定义了按钮和背景所需的图片
+2. `layout` 路径是更新对话框显示的布局
+3. `values` 路径下是显示的字符串资源， 这些都是可以直接修改的。
 
 
 ### 固定ID资源
