@@ -1,7 +1,6 @@
-自动更新组件主题皮肤
-=======================
-
 ## 自定义自动更新对话框UI
+
+![默认样式](https://raw.github.com/ntop001/umeng-android-sdk-theme/master/update/default/demo.png)
 
 ### 结构
 
@@ -9,19 +8,21 @@
 
 ```
 res - drawable - umeng_update_button_cancle_normal.xml
-                          - umeng_update_button_cancle_tap.xml
-                          - umeng_update_button_ok_normal.xml
-                          - umeng_update_button_ok_tap.xml
-                          - umeng_update_button_cancle_selector.xml
-                          - umeng_update_button_ok_selector.xml
-                          - umeng_update_title_bg.xml
-                          - umeng_update_dialog_bg.xml
-                          - umeng_update_wifi_disable.png
-      - layout      - umeng_update_dialog.xml
-      - values      - umeng_common_strings.xml
-      			  - umeng_update_string,xml
-      - values-zh -  umeng_common_strings.xml
-      			  - umeng_update_string,xml
+               - umeng_update_button_cancle_tap.xml
+               - umeng_update_button_ok_normal.xml
+               - umeng_update_button_ok_tap.xml
+               - umeng_update_button_cancle_selector.xml
+               - umeng_update_button_ok_selector.xml
+               - umeng_update_title_bg.xml
+               - umeng_update_dialog_bg.xml
+               - umeng_update_wifi_disable.png
+               
+      - layout - umeng_update_dialog.xml
+      
+      - values - umeng_common_strings.xml
+               - umeng_update_string,xml
+      - values-zh - umeng_common_strings.xml
+                  - umeng_update_string,xml
 ```
 
 `drawable`  路径下定义了按钮和背景所需的图片， `layout` 路径是更新对话框显示的布局， `values` 路径下是显示的字符串资源， 这些都是可以直接修改的。
@@ -62,6 +63,13 @@ res - drawable - umeng_update_button_cancle_normal.xml
   </tr>
 </tbody></table>
 
+
+`values`路径下定义的字符串资源 `name` 属性不可更改，值可以随意修改.
+`drawable` 路径下的图片资源，在`SDK`代码中没有直接引用，可以直接更换图片内容
+（如果修改名称需要同时修改其他 `xml` 中的引用，一般不要这么做)
+
+
+
 ### 生成对话框
 SDK 在显示对话框之前会做如下步骤的操作：
 
@@ -73,7 +81,8 @@ SDK 在显示对话框之前会做如下步骤的操作：
 
 ### 如何自定义UI
 
-通过上面的描述，应该可以清楚的自定义弹出对话框的样式， 通过  `umeng_update_dialog.xml`  修改对话框布局样式即可。
+通过上面的描述，应该可以清楚的自定义弹出对话框的样式， 通过  `umeng_update_dialog.xml`  修改对话框布局样式即可, 除了固定ID
+的资源类型和Id不可变动外，
 
 
 下面链接是我们提供的一些不同风格的UI：
