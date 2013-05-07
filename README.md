@@ -1,4 +1,4 @@
-umeng-android-sdk-theme
+友盟组件主题
 =======================
 
-themes and styles for umeng android sdk servivces / components. 
+此工程提供针对友盟 自动更新组件 的多种主题样式。详见[这里]()
