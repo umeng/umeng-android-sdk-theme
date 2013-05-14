@@ -91,6 +91,13 @@ SDK 在显示对话框之前会做如下步骤的操作：
 
 下面链接是我们提供的一些不同风格的UI：
 
+#### 1. [默认](https://github.com/ntop001/umeng-android-sdk-theme/tree/master/update/default)
+<img src="https://raw.github.com/ntop001/umeng-android-sdk-theme/master/update/default/demo.png" width="200" />
+#### 2. [蓝色](https://github.com/ntop001/umeng-android-sdk-theme/tree/master/update/white-blue)
+<img src="https://raw.github.com/ntop001/umeng-android-sdk-theme/master/update/white-blue/white-blue.png" width="200"/>
+#### 3. [简约](https://github.com/ntop001/umeng-android-sdk-theme/tree/master/update/light)
+<img src="https://raw.github.com/ntop001/umeng-android-sdk-theme/master/update/light/light.png" width="200"/>
+
 
 
 
