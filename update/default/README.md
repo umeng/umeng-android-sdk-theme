@@ -1,6 +1,6 @@
 ### 效果图
 
-![](https://raw.github.com/ntop001/umeng-android-sdk-theme/master/update/default/demo.png)
+![](https://raw.github.com/ntop001/umeng-android-sdk-theme/master/update/default/light.png)
 
 ### 结构
 
