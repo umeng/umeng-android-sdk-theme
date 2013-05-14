@@ -9,10 +9,9 @@
     <RelativeLayout 
         android:layout_width="fill_parent" 
         android:layout_height="40dp"
-        android:background="@drawable/umeng_update_title_bg"
         >
 
-        <ImageView 
+        <ImageView android:id="@+id/umeng_update_wifi_indicator"
             android:src="@drawable/umeng_update_wifi_disable"
             android:layout_centerVertical="true"
             android:layout_width="30dp"
@@ -25,11 +24,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/UMUpdateTitle"
-            android:textColor="#13A3FF"
+            android:textColor="#63C2FF"
             android:layout_centerInParent="true"
             />
     </RelativeLayout>
     
+    <!-- split -->
+    <View android:background="#2AACFF" android:layout_width="280dp" android:layout_height="2dp" 
+          android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+        />
     <!-- Content -->
    <LinearLayout 
         android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -40,7 +43,7 @@
             android:layout_width="280dp" 
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:textColor="#6B6970"
+            android:textColor="#AAABAF"
             />
     </LinearLayout>
 
@@ -62,6 +65,6 @@
                 android:layout_margin="10dp"
             	android:padding="12dp"
             	android:gravity="center"
-            	android:textColor="#FFFFFF" />
+            	android:textColor="#AAABAF" />
     </LinearLayout>
 </LinearLayout>
