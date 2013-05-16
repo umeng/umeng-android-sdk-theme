@@ -1,4 +1,4 @@
-### 效果图
+﻿### 效果图
 
 ![](https://raw.github.com/ntop001/umeng-android-sdk-theme/master/update/default/demo.png)
 
@@ -7,11 +7,11 @@
 自动更新需要的默认资源结构如下：
 
 ```
-res - drawable - umeng_update_button_cancle_normal.xml
-               - umeng_update_button_cancle_tap.xml
+res - drawable - umeng_update_button_cancel_normal.xml
+               - umeng_update_button_cancel_tap.xml
                - umeng_update_button_ok_normal.xml
                - umeng_update_button_ok_tap.xml
-               - umeng_update_button_cancle_selector.xml
+               - umeng_update_button_cancel_selector.xml
                - umeng_update_button_ok_selector.xml
                - umeng_update_title_bg.xml
                - umeng_update_dialog_bg.xml

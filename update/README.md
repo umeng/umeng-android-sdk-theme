@@ -1,4 +1,4 @@
-## 自定义自动更新对话框UI
+﻿## 自定义自动更新对话框UI
 
 ### 默认效果图如下：
 
@@ -9,11 +9,11 @@
 自动更新需要的默认资源结构如下：
 
 ```
-res - drawable - umeng_update_button_cancle_normal.xml
-               - umeng_update_button_cancle_tap.xml
+res - drawable - umeng_update_button_cancel_normal.xml
+               - umeng_update_button_cancel_tap.xml
                - umeng_update_button_ok_normal.xml
                - umeng_update_button_ok_tap.xml
-               - umeng_update_button_cancle_selector.xml
+               - umeng_update_button_cancel_selector.xml
                - umeng_update_button_ok_selector.xml
                - umeng_update_title_bg.xml
                - umeng_update_dialog_bg.xml
@@ -62,7 +62,7 @@ res - drawable - umeng_update_button_cancle_normal.xml
   <tr>
 
     <td>Button</td>
-    <td>umeng_update_id_cancle</td>
+    <td>umeng_update_id_cancel</td>
     <td>取消按钮</td>
   </tr>
 </tbody></table>
@@ -80,7 +80,7 @@ SDK 在显示对话框之前会做如下步骤的操作：
 1.  找到 `umeng_update_dialog.xml` 作为对话框的内部 `View`
 2.  找到 `umeng_update_wifi_indicator` 根据当前wifi状态设置是否可见
 3.  找到 `umeng_update_content`  文本区设置更新日志
-4.  分别找到 `umeng_update_id_ok` 和 `umeng_update_id_cancle` 按钮设置监听
+4.  分别找到 `umeng_update_id_ok` 和 `umeng_update_id_cancel` 按钮设置监听
 5. 显示对话框
 
 ### 如何自定义UI
