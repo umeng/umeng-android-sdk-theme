@@ -33,7 +33,7 @@ res - drawable - umeng_update_button_cancel_normal.xml
 
 #### 1. 修改布局文件
 
-布局文件默认实现如下, 分成 `Title`, `SplitView` , `Content` , `Ok&Cancle Button` 三部分.
+布局文件默认实现如下, 分成 `Title`, `SplitView` , `Content` , `Ok&Cancel Button` 三部分.
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -85,21 +85,21 @@ res - drawable - umeng_update_button_cancel_normal.xml
             />
     </LinearLayout>
 
-    <!-- OK&Cancle Button -->
+    <!-- OK&Cancel Button -->
     <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent">
         <Button android:id="@+id/umeng_update_id_ok"
                            android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" 
             	android:text="@string/UMUpdateNow" 
-            	android:background="@drawable/umeng_update_ok_selector"
+            	android:background="@drawable/umeng_update_button_ok_selector"
             	android:layout_margin="10dp"
             	android:padding="12dp"
             	android:gravity="center"
             	android:textColor="#FFFFFF"/>
         
-        <Button android:id="@+id/umeng_update_id_cancle"
+        <Button android:id="@+id/umeng_update_id_cancel"
             	android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" 
                 android:text="@string/UMNotNow"
-                android:background="@drawable/umeng_update_cancle_selector"
+                android:background="@drawable/umeng_update_button_cancel_selector"
                 android:layout_margin="10dp"
             	android:padding="12dp"
             	android:gravity="center"
@@ -167,21 +167,21 @@ res - drawable - umeng_update_button_cancel_normal.xml
             />
     </LinearLayout>
 
-    <!-- OK&Cancle Button -->
+    <!-- OK&Cancel Button -->
     <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent">
         <Button android:id="@+id/umeng_update_id_ok"
                            android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" 
             	android:text="@string/UMUpdateNow" 
-            	android:background="@drawable/umeng_update_ok_selector"
+            	android:background="@drawable/umeng_update_button_ok_selector"
             	android:layout_margin="10dp"
             	android:padding="12dp"
             	android:gravity="center"
             	android:textColor="#FFFFFF"/>
         
-        <Button android:id="@+id/umeng_update_id_cancle"
+        <Button android:id="@+id/umeng_update_id_cancel"
             	android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" 
                 android:text="@string/UMNotNow"
-                android:background="@drawable/umeng_update_cancle_selector"
+                android:background="@drawable/umeng_update_button_cancel_selector"
                 android:layout_margin="10dp"
             	android:padding="12dp"
             	android:gravity="center"
@@ -213,9 +213,9 @@ res - drawable - umeng_update_button_cancel_normal.xml
 
 修改 `Button` 风格，`Button` 涉及文件较多，分别如下：
 
-1. `umeng_update_button_cancle_normal.xml` 取消按钮正常状态
-2. `umeng_update_button_cancle_tap.xml` 取消按钮点击状态
-3. `umeng_update_button_cancle_selector.xml` 取消按钮背景 `state selector`
+1. `umeng_update_button_cancel_normal.xml` 取消按钮正常状态
+2. `umeng_update_button_cancel_tap.xml` 取消按钮点击状态
+3. `umeng_update_button_cancel_selector.xml` 取消按钮背景 `state selector`
 4. `umeng_update_button_ok_normal.xml` 确认按钮正常状态
 5. `umeng_update_button_ok_tap.xml` 确认按钮点击状态
 6. `umeng_update_button_ok_selector.xml` 确认按钮背景 `state selector`
