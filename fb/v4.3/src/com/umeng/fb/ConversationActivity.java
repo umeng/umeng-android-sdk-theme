@@ -3,13 +3,11 @@ package com.umeng.fb;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import android.R;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,7 +22,6 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
 import com.umeng.fb.model.Conversation;
@@ -285,7 +282,6 @@ public class ConversationActivity extends Activity {
 		@Override
 		public int getCount() {
 			List<Reply> replyList = defaultConversation.getReplyList();
-			Log.d(TAG, "getCount: " + replyList.hashCode());
 			return (replyList == null) ? 0 : replyList.size();
 		}
 
