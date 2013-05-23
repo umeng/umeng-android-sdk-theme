@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/umeng_update_dialog_bg">
+    
+    <!-- Title -->
+    <RelativeLayout 
+        android:layout_width="fill_parent" 
+        android:layout_height="40dp"
+        android:background="@drawable/umeng_update_title_bg"
+        >
+
+        <ImageView android:id="@+id/umeng_update_wifi_indicator"
+            android:src="@drawable/umeng_update_wifi_disable"
+            android:layout_centerVertical="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            />
+            
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/UMUpdateTitle"
+            android:textColor="#FFFFFF"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+    
+    <!-- Content -->
+   <LinearLayout 
+        android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:layout_margin="10dp">
+
+        <TextView android:id="@+id/umeng_update_content"
+            android:layout_height="wrap_content" 
+            android:layout_width="280dp" 
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#AAABAF"
+            />
+    </LinearLayout>
+
+    <!-- OK&Cancel Button -->
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent">
+        <Button android:id="@+id/umeng_update_id_ok"
+            	android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" 
+            	android:text="@string/UMUpdateNow" 
+            	android:background="@drawable/umeng_update_button_ok_selector"
+            	android:layout_margin="10dp"
+            	android:padding="12dp"
+            	android:gravity="center"
+            	android:textColor="#FFFFFF"/>
+        
+        <Button android:id="@+id/umeng_update_id_cancel"
+            	android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" 
+                android:text="@string/UMNotNow"
+                android:background="@drawable/umeng_update_button_cancel_selector"
+                android:layout_margin="10dp"
+            	android:padding="12dp"
+            	android:gravity="center"
+            	android:textColor="#AAABAF" />
+    </LinearLayout>
+</LinearLayout>
