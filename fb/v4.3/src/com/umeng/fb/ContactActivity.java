@@ -117,7 +117,16 @@ public class ContactActivity extends Activity {
 							.toString();
 					contact.put(KEY_UMENG_CONTACT_INFO_PLAIN_TEXT, contact_info);
 					info.setContact(contact);
+					
+					
+//					Map<String, String> remark = info.getRemark();
+//					if (remark == null)
+//						remark = new HashMap<String, String>();
+//					remark.put("tag1", "game");
+//					info.setRemark(remark);
+
 					agent.setUserInfo(info);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
