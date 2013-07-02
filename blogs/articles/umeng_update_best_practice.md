@@ -69,7 +69,7 @@ public void onCheckUpdateClicked(){
 
 这种方式或许更友好一点，第一种方式频繁的给用户提示新版本不是很友好，第二种方式又过于被动，很多情况下用户不会主动检测新版本，如果在设置界面就告诉用户最新版本或许是一种折中的做法。
 
-1. 需要先写两个工具方法，记录和恢复更新状态
+#### 1. 需要先写两个工具方法，记录和恢复更新状态
 
 ```
 	private void saveResponse(Context context,UpdateResponse updateInfo){
@@ -96,7 +96,7 @@ public void onCheckUpdateClicked(){
 	}
 ```
 
-1. 在程序入口调用如下方法，检测新版,并保存更新状态
+#### 2. 在程序入口调用如下方法，检测新版,并保存更新状态
 
 ```
 public void checkUpdate(){
@@ -128,7 +128,7 @@ public void checkUpdate(){
 
 ```
 
-2. 在打开设置页面的时候，读取缓存的状态，提示用户
+####　3. 在打开设置页面的时候，读取缓存的状态，提示用户
 
 
 ```
