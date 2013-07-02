@@ -3,11 +3,11 @@
 更新提示的三种设计思路
 
 1. 后台检测，弹出更新提示框<br>
-![example](http://)
+<img src="https://raw.github.com/ntop001/umeng-android-sdk-theme/master/blogs/images/update1.png" width="400"/>
 2. 在设置界面提供更新检测按钮，即时检测<br>
-![example]()
+<img src="https://raw.github.com/ntop001/umeng-android-sdk-theme/master/blogs/images/update2.png" width="400"/>
 3. 提前检测,在设置界面提示最新版本<br>
-![example]()
+<img src="https://raw.github.com/ntop001/umeng-android-sdk-theme/master/blogs/images/update3.png" width="400"/>
 
 这三种实现都基于友盟的自动更新服务，友盟自动更新集成文档在[*这里*](http://dev.umeng.com/doc/document_update_android.html)
 
@@ -28,7 +28,7 @@ public void onCreate(Bundle  savedInstanceState) {
 
 ## 2. 在设置界面提供更新检测按钮，即时检测<br>
 
-很多App都会在设置界面提供 **新版本检测** 功能，如图示，假如点击按钮之后会调用如下的方法：
+很多App都会在设置界面提供 *新版本检测* 功能，点击按钮之后会调用如下的方法即可实现。
 
 ```
 public void onCheckUpdateClicked(){
@@ -140,7 +140,7 @@ if( updateInfo.hasUpdate) {
 
 // 或者直接强制更新：
 // if( updateInfo.hasUpdate) {
-//	UmengUpdateAgent.startDownload( updateInfo );
+//	UmengUpdateAgent.startDownload(mContext, updateInfo);
 // }
 
 ```
@@ -180,7 +180,7 @@ if( updateInfo.hasUpdate) {
 
 这样调用 `update( mContext, 24*60*60*1000 );` 就可以实现按天更新。
 
-自动更新对话框默认两个按钮 “立即更新” “以后再说”， 我想把以后再说改成 “不再提示” 怎么办 ？
+给自动更新对话框添加更新的逻辑，默认两个按钮 “立即更新” “以后再说”， 我想把以后再说改成 “不再提示” 怎么办 ？
 
 修改对应的 xml 文件如下：
 
@@ -215,11 +215,11 @@ if( updateInfo.hasUpdate) {
     </LinearLayout>
 ```
 
-上面的修改首先隐藏了原来的更新提示按钮（注意只能隐藏，不能删除），然后添加一个新的按钮，回调函数是 `onButtonClick` , 这样在调用update 的地方实现回调函数就可以了。
+上面的修改首先隐藏了原来的更新提示按钮（注意只能隐藏，不能删除），然后添加一个新的按钮，回调函数是 `onButtonClick` , 这样在调用update 的 Activity 地方实现回调函数就可以了。
 
 ```
 	public void onButtonClick(View v){
-		// 处理新的逻辑
+		// 这里只是演示，需要开发者按需求处理新的逻辑,
 		Log.i("--->", "onButtonClick");
 	}
 ```
