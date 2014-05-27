@@ -81,14 +81,10 @@ public class ConversationActivity extends Activity {
 					// play the trick:
 					// http://stackoverflow.com/questions/6495007/verifyerror-deploying-on-api-1-6
 					if (android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.DONUT) {
-						new Object() {
-							public void overridePendingTransition(Activity c) {
+						overridePendingTransition(
+								R.anim.umeng_fb_slide_in_from_right,
+								R.anim.umeng_fb_slide_out_from_left);
 
-								c.overridePendingTransition(
-										R.anim.umeng_fb_slide_in_from_right,
-										R.anim.umeng_fb_slide_out_from_left);
-							}
-						}.overridePendingTransition(ConversationActivity.this);
 					}
 				}
 
