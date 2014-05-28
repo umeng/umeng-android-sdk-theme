@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -291,11 +292,7 @@ public class ConversationActivity extends Activity {
 		private DevReply createInitDevReply(String content) {
 
 			try {
-				String className = "com.umeng.fb.model.DevReply";// really
-																	// passed in
-																	// from
-																	// config
-				Class c = Class.forName(className);
+				Class c = com.umeng.fb.model.DevReply.class;
 				Constructor constructor = c.getDeclaredConstructor(new Class[] {
 						String.class, String.class, String.class, String.class,
 						String.class });
@@ -373,6 +370,7 @@ public class ConversationActivity extends Activity {
 			holder.replyDate.setText(SimpleDateFormat.getDateTimeInstance()
 					.format(reply.getDatetime()));
 			holder.replyContent.setText(reply.getContent());
+
 			return convertView;
 		}
 
