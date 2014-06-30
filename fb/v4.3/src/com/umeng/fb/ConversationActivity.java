@@ -86,8 +86,8 @@ public class ConversationActivity extends Activity {
 
 			});
 
-			if (agent.getUserInfoLastUpdateAt() > 0)
-				contact_entry.setVisibility(View.GONE);
+			//if (agent.getUserInfoLastUpdateAt() > 0)
+			//	contact_entry.setVisibility(View.GONE);
 
 			findViewById(com.umeng.fb.res.IdMapper.umeng_fb_back(this))
 					.setOnClickListener(new OnClickListener() {
