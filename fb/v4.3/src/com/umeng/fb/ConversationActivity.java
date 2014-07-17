@@ -1,5 +1,6 @@
-package com.umeng.fb;
+package com.umeng.example.fb;
 
+import java.lang.reflect.Constructor;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -8,6 +9,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,6 +27,9 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.umeng.example.R;
+import com.umeng.fb.ContactActivity;
+import com.umeng.fb.FeedbackAgent;
 import com.umeng.fb.model.Conversation;
 import com.umeng.fb.model.DevReply;
 import com.umeng.fb.model.Reply;
@@ -43,14 +49,13 @@ public class ConversationActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(com.umeng.fb.res.LayoutMapper
-				.umeng_fb_activity_conversation(this));
+
+		setContentView(R.layout.umeng_fb_activity_conversation);
 		try {
 			agent = new FeedbackAgent(this);
 			defaultConversation = agent.getDefaultConversation();
 
-			replyListView = (ListView) findViewById(com.umeng.fb.res.IdMapper
-					.umeng_fb_reply_list(this));
+			replyListView = (ListView) findViewById(R.id.umeng_fb_reply_list);
 
 			setListViewHeader();
 
@@ -61,8 +66,7 @@ public class ConversationActivity extends Activity {
 			sync();
 
 			// contact info entry
-			View contact_entry = findViewById(com.umeng.fb.res.IdMapper
-					.umeng_fb_conversation_contact_entry(this));
+			View contact_entry = findViewById(R.id.umeng_fb_conversation_contact_entry);
 
 			contact_entry.setOnClickListener(new OnClickListener() {
 
@@ -75,12 +79,13 @@ public class ConversationActivity extends Activity {
 					startActivity(intent);
 
 					// play an Activity exit and entrance animation.
+					// play the trick:
+					// http://stackoverflow.com/questions/6495007/verifyerror-deploying-on-api-1-6
 					if (android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.DONUT) {
 						overridePendingTransition(
-								com.umeng.fb.res.AnimMapper
-										.umeng_fb_slide_in_from_right(ConversationActivity.this),
-								com.umeng.fb.res.AnimMapper
-										.umeng_fb_slide_out_from_left(ConversationActivity.this));
+								R.anim.umeng_fb_slide_in_from_right,
+								R.anim.umeng_fb_slide_out_from_left);
+
 					}
 				}
 
@@ -89,8 +94,8 @@ public class ConversationActivity extends Activity {
 			if (agent.getUserInfoLastUpdateAt() > 0)
 				contact_entry.setVisibility(View.GONE);
 
-			findViewById(com.umeng.fb.res.IdMapper.umeng_fb_back(this))
-					.setOnClickListener(new OnClickListener() {
+			findViewById((R.id.umeng_fb_back)).setOnClickListener(
+					new OnClickListener() {
 
 						@Override
 						public void onClick(View v) {
@@ -98,17 +103,16 @@ public class ConversationActivity extends Activity {
 						}
 					});
 
-			userReplyContentEdit = (EditText) findViewById(com.umeng.fb.res.IdMapper
-					.umeng_fb_reply_content(ConversationActivity.this));
+			userReplyContentEdit = (EditText) findViewById(R.id.umeng_fb_reply_content);
 
-			findViewById(com.umeng.fb.res.IdMapper.umeng_fb_send(this))
-					.setOnClickListener(new OnClickListener() {
+			findViewById(R.id.umeng_fb_send).setOnClickListener(
+					new OnClickListener() {
 						@Override
 						public void onClick(View v) {
 
 							String content = userReplyContentEdit
 									.getEditableText().toString().trim();
-							if (com.umeng.common.util.Helper.isEmpty(content))
+							if (TextUtils.isEmpty(content))
 								return;
 
 							userReplyContentEdit.getEditableText().clear();
@@ -140,8 +144,7 @@ public class ConversationActivity extends Activity {
 	private void setListViewHeader() {
 		LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		header = (RelativeLayout) inflater.inflate(
-				com.umeng.fb.res.LayoutMapper.umeng_fb_list_header(this),
-				replyListView, false);
+				R.layout.umeng_fb_list_header, replyListView, false);
 
 		replyListView.addHeaderView(header);
 		measureView(header);
@@ -162,22 +165,23 @@ public class ConversationActivity extends Activity {
 					return false;
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_UP:
-					if (replyListView.getFirstVisiblePosition() == 0
-							&& (header.getBottom() >= headerHeight + 20 || header
-									.getTop() > 0)) {
-						header.setVisibility(View.VISIBLE);
-						header.setPadding(header.getPaddingLeft(),
-								headerPaddingOriginal,
-								header.getPaddingRight(),
-								header.getPaddingBottom());
-					} else // if (header.getBottom() < headerHeight + 20 ||
-							// header.getTop() <= 0)
-					{
-						replyListView.setSelection(1);
-						header.setVisibility(View.GONE);
-						header.setPadding(header.getPaddingLeft(),
-								-headerHeight, header.getPaddingRight(),
-								header.getPaddingBottom());
+					if (replyListView.getFirstVisiblePosition() == 0) {
+						if ((header.getBottom() >= headerHeight + 20 || header
+								.getTop() > 0)) {
+							header.setVisibility(View.VISIBLE);
+							header.setPadding(header.getPaddingLeft(),
+									headerPaddingOriginal,
+									header.getPaddingRight(),
+									header.getPaddingBottom());
+						} else // if (header.getBottom() < headerHeight + 20 ||
+								// header.getTop() <= 0)
+						{
+							replyListView.setSelection(1);
+							header.setVisibility(View.GONE);
+							header.setPadding(header.getPaddingLeft(),
+									-headerHeight, header.getPaddingRight(),
+									header.getPaddingBottom());
+						}
 					}
 					break;
 				case MotionEvent.ACTION_DOWN:
@@ -222,7 +226,7 @@ public class ConversationActivity extends Activity {
 					int visibleItemCount, int totalItemCount) {
 				if (mScrollState == OnScrollListener.SCROLL_STATE_FLING
 						&& firstVisibleItem == 0) {
-					replyListView.setSelection(1);
+					// replyListView.setSelection(1);
 				}
 			}
 
@@ -279,10 +283,35 @@ public class ConversationActivity extends Activity {
 			mInflater = LayoutInflater.from(mContext);
 		}
 
+		/**
+		 * 
+		 * @param content
+		 *            提示用户的内容
+		 * @return
+		 */
+		private DevReply createInitDevReply(String content) {
+
+			try {
+				Class c = com.umeng.fb.model.DevReply.class;
+				Constructor constructor = c.getDeclaredConstructor(new Class[] {
+						String.class, String.class, String.class, String.class,
+						String.class });
+				constructor.setAccessible(true);
+				DevReply devReply = (DevReply) constructor
+						.newInstance(new Object[] { content, "appkey",
+								"userid", "feedback_id", "user_name" });
+				return devReply;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			return null;
+		}
+
 		@Override
 		public int getCount() {
 			List<Reply> replyList = defaultConversation.getReplyList();
-			return (replyList == null) ? 0 : replyList.size();
+			return (replyList == null) ? 1 : replyList.size() + 1;
 		}
 
 		/*
@@ -293,28 +322,31 @@ public class ConversationActivity extends Activity {
 		 */
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-
 			ViewHolder holder;
 			if (convertView == null) {
-				convertView = mInflater.inflate(com.umeng.fb.res.LayoutMapper
-						.umeng_fb_list_item(mContext), null);
+				convertView = mInflater.inflate(R.layout.umeng_fb_list_item,
+						null);
 
 				holder = new ViewHolder();
 
 				holder.replyDate = (TextView) convertView
-						.findViewById(com.umeng.fb.res.IdMapper
-								.umeng_fb_reply_date(mContext));
+						.findViewById(R.id.umeng_fb_reply_date);
 
 				holder.replyContent = (TextView) convertView
-						.findViewById(com.umeng.fb.res.IdMapper
-								.umeng_fb_reply_content(mContext));
+						.findViewById(R.id.umeng_fb_reply_content);
 
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			Reply reply = defaultConversation.getReplyList().get(position);
+			Reply reply;
+			if (position == 0) {
+				// 自定义提示内容
+				reply = createInitDevReply("自定义提示内容");
+			} else {
+				reply = defaultConversation.getReplyList().get(position - 1);
+			}
 
 			RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
 					RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -326,20 +358,19 @@ public class ConversationActivity extends Activity {
 
 				// set bg after layout
 				holder.replyContent
-						.setBackgroundResource(com.umeng.fb.res.DrawableMapper
-								.umeng_fb_reply_left_bg(mContext));
+						.setBackgroundResource(R.drawable.umeng_fb_reply_left_bg);
 			} else {
 				layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT); // ALIGN_PARENT_RIGHT
 				// layoutParams.removeRule(RelativeLayout.ALIGN_PARENT_LEFT);
 				holder.replyContent.setLayoutParams(layoutParams);
 				holder.replyContent
-						.setBackgroundResource(com.umeng.fb.res.DrawableMapper
-								.umeng_fb_reply_right_bg(mContext));
+						.setBackgroundResource(R.drawable.umeng_fb_reply_right_bg);
 			}
 
 			holder.replyDate.setText(SimpleDateFormat.getDateTimeInstance()
 					.format(reply.getDatetime()));
 			holder.replyContent.setText(reply.getContent());
+
 			return convertView;
 		}
 
